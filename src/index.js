@@ -4,8 +4,6 @@ import { AppContainer } from "react-hot-loader";
 // import _ from 'lodash';
 import MainContainer from './containers/MainContainer';
 
-import './styles.css';
-
 const render = Component =>
   ReactDOM.render(
     <AppContainer>

@@ -11,7 +11,10 @@ import rootSaga from '../saga/rootSaga'
 import reducer from '../reducers/rootReducer'
 
 import { CounterState } from '../components/CounterState';
-import { BTCInfoBlock } from '../components/BTCInfoBlock/BTCInfoBlock';
+import { Head } from '../components/head/Head';
+import { Body } from '../components/body/Body';
+
+import './../styles/main.scss';
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
@@ -27,12 +30,12 @@ const MainContainer = () => {
   return (
     <Provider store={store}>
       <div>
+        <Head/>
+        <Body/>
         <div>Main app 3</div>
         <button onClick={() => action('INCREMENT')}>Increment</button>
         <button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>
-        <button onClick={() => action('FETCH_TICKER')}>Fetch ticker</button>
         <CounterState/>
-        <BTCInfoBlock/>
       </div>
     </Provider>
   );

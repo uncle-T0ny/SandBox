@@ -10,10 +10,14 @@ const mapStateToProps = state => {
 
 @connect(mapStateToProps)
 class BTCInfoBlock extends PureComponent {
+  componentWillMount() {
+    this.props.dispatch({ type: 'FETCH_TICKER' });
+  }
+
   render() {
     return (
       <div className="BTCInfoBlock">
-        <div>state: {this.props.btcInUSD}</div>
+        <div>1 BTC {this.props.btcInUSD} USD</div>
       </div>
     )
   }
