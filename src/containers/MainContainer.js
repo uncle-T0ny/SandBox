@@ -16,7 +16,7 @@ import { Body } from '../components/body/Body';
 
 import './../styles/main.scss';
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducer,
   applyMiddleware(sagaMiddleware)
@@ -24,15 +24,19 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga)
 
-const action = type => store.dispatch({type})
+const action = type => store.dispatch({type});
 
 const MainContainer = () => {
   return (
     <Provider store={store}>
       <div>
+
         <Head/>
+
         <Body/>
+
         <div>Main app 3</div>
+
         <button onClick={() => action('INCREMENT')}>Increment</button>
         <button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>
         <CounterState/>

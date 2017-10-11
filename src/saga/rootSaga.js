@@ -1,10 +1,10 @@
-import { delay } from 'redux-saga'
-import { put, takeEvery, takeLatest, all, call } from 'redux-saga/effects'
+import { delay } from 'redux-saga';
+import { put, take, takeEvery, takeLatest, all, call, select } from 'redux-saga/effects';
 import CryptoAPI from './../api/CryptoAPI';
 
 export function* incrementAsync() {
-  yield call(delay, 1000)
-  yield put({ type: 'INCREMENT' })
+  yield call(delay, 1000);
+  yield put({ type: 'INCREMENT' });
 }
 
 export function* fetchBtcTicker() {
@@ -17,20 +17,25 @@ export function* fetchBtcTicker() {
 }
 
 export function* watchFetchTicker() {
-  yield takeLatest('FETCH_TICKER', fetchBtcTicker)
+  yield takeLatest('FETCH_TICKER', fetchBtcTicker);
 }
 
 export function* watchIncrementAsync() {
-  yield takeEvery('INCREMENT_ASYNC', incrementAsync)
+  yield takeEvery('INCREMENT_ASYNC', incrementAsync);
 }
 
-export function* helloSaga() {
-  console.log('hello saga!')
+export function* watchAndLog() {
+  while (true) {
+    const action = yield take('*');
+    const state = yield select();
+    console.log('action', action);
+    console.log('state after', state);
+  }
 }
 
 export default function* rootSaga() {
   yield all([
-    helloSaga(),
+    watchAndLog(),
     watchIncrementAsync(),
     watchFetchTicker()
   ])

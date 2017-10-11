@@ -17,7 +17,7 @@ class BTCInfoBlock extends PureComponent {
   render() {
     return (
       <div className="BTCInfoBlock">
-        <div>1 BTC {this.props.btcInUSD} USD</div>
+        <div>1 BTC = {this.props.btcInUSD} USD</div>
       </div>
     )
   }
