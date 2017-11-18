@@ -1,0 +1,10 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "devDependencies": {
+    "hapi": "^16.6.2",
+    "hapi-auth-jwt2": "^7.3.0"
+  }
+}
