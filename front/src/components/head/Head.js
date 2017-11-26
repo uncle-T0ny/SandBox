@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 
-import { BTCInfoBlock } from './../BTCInfoBlock/BTCInfoBlock';
+import { InfoBlock } from './../Customizer';
 
 import './Head.scss';
 
@@ -16,7 +16,7 @@ class Head extends PureComponent {
   render() {
     return (
       <div className="Head">
-        <BTCInfoBlock/>
+        <InfoBlock />
       </div>
     )
   }
