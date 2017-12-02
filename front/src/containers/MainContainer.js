@@ -44,6 +44,6 @@ const MainContainer = () => (
       <StateMachine />
     </div>
   </Provider>
-);
+)
 
 export default MainContainer;

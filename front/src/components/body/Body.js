@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import './Body.scss';
 
 const mapStateToProps = state => {
   return {
     btcInUSD: state.ticker.price_usd
-  }
+  };
 };
 
 @connect(mapStateToProps)
@@ -15,7 +15,7 @@ class Body extends PureComponent {
       <div className="Body">
         body
       </div>
-    )
+    );
   }
 };
 

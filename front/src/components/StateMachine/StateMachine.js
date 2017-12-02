@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import TrafficLight from './TrafficLight/TrafficLight';
 import './StateMachine.scss';
 
 const mapStateToProps = state => {
-  return {
-  }
+  return {};
 };
 
 @connect(mapStateToProps)
@@ -16,8 +15,8 @@ class StateMachine extends PureComponent {
       <div className="StateMachine">
         <TrafficLight />
       </div>
-    )
+    );
   }
-};
+}
 
 export { StateMachine };
