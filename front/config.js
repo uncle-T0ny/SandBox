@@ -1,4 +1,4 @@
 export default {
-  version: 'v2',
+  version: 'v1',
   type: 'normal'
 };
