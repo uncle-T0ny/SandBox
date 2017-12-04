@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import 'babel-core/register';
+import 'antd/dist/antd.css';
 
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
@@ -15,6 +16,9 @@ import { StateMachine } from '../components/StateMachine/StateMachine';
 import { Head } from '../components/head/Head';
 import { Body } from '../components/body/Body';
 
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
+
 import './../styles/main.scss';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -29,20 +33,22 @@ const action = type => store.dispatch({ type });
 
 const MainContainer = () => (
   <Provider store={store}>
-    <div>
+    <LocaleProvider locale={enUS}>
+      <div>
 
-      <Head />
+        <Head />
 
-      <Body />
+        <Body />
 
-      <div>Main app 3</div>
+        <div>Main app 3</div>
 
-      <button onClick={() => action('INCREMENT')}>Increment</button>
-      <button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>
-      <CounterState />
+        <button onClick={() => action('INCREMENT')}>Increment</button>
+        <button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>
+        <CounterState />
 
-      <StateMachine />
-    </div>
+        <StateMachine />
+      </div>
+    </LocaleProvider>
   </Provider>
 )
 
