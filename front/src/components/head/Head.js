@@ -20,11 +20,11 @@ class Head extends PureComponent {
   render() {
     return (
       <div className="Head">
-        <InfoBlock />
         <DatePicker
           defaultValue={moment('2015-06-06', dateFormat)}
           format={dateFormat}
           placeholder="Select Time" />
+        <InfoBlock />
       </div>
     );
   }
