@@ -11,15 +11,23 @@ import rootSaga from '../saga/rootSaga';
 
 import reducer from '../reducers/rootReducer';
 
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+
+
 import { CounterState } from '../components/CounterState';
 import { StateMachine } from '../components/StateMachine/StateMachine';
 import { Head } from '../components/head/Head';
 import { Body } from '../components/body/Body';
+import { Registration } from '../components/registration/Registration';
 
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 
 import './../styles/main.scss';
+import './MainContainer.scss';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -31,25 +39,30 @@ sagaMiddleware.run(rootSaga);
 
 const action = type => store.dispatch({ type });
 
+
 const MainContainer = () => (
   <Provider store={store}>
     <LocaleProvider locale={enUS}>
-      <div>
+      <Router>
+        <div className="MainContainer">
 
-        <Head />
+          <Head/>
 
-        <Body />
+          <Route exact path="/" component={Body}/>
+          <Route path="/registration" component={Registration}/>
 
-        <div>Main app 3</div>
+          {/*<div>Main app 3</div>*/}
 
-        <button onClick={() => action('INCREMENT')}>Increment</button>
-        <button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>
-        <CounterState />
+          {/*<button onClick={() => action('INCREMENT')}>Increment</button>*/}
+          {/*<button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>*/}
+          {/*<CounterState />*/}
 
-        <StateMachine />
-      </div>
+          {/*<StateMachine />*/}
+        </div>
+      </Router>
+
     </LocaleProvider>
   </Provider>
-)
+);
 
 export default MainContainer;

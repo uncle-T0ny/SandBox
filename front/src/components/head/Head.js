@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { InfoBlock } from './../Customizer';
 import { DatePicker } from 'antd';
@@ -20,10 +21,14 @@ class Head extends PureComponent {
   render() {
     return (
       <div className="Head">
-        <DatePicker
-          defaultValue={moment('2015-06-06', dateFormat)}
-          format={dateFormat}
-          placeholder="Select Time" />
+        {/*<DatePicker*/}
+          {/*defaultValue={moment('2015-06-06', dateFormat)}*/}
+          {/*format={dateFormat}*/}
+          {/*placeholder="Select Time" />*/}
+
+        <Link to="/">Home</Link>
+        <Link to="/registration">Registrations</Link>
+
         <InfoBlock />
       </div>
     );

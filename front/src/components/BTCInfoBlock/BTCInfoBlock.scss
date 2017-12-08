@@ -1,6 +1,7 @@
 @import "../../styles/colors";
 .BTCInfoBlock {
   color: $primary-color-text;
-  border: 1px solid;
-  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
