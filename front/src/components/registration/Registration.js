@@ -15,9 +15,12 @@ class Registration extends PureComponent {
 
   onLogIn() {
     const { email, password } = this.props;
+    this.props.dispatch({ type: 'CHANGE_FIELD', isFetchAuth: true });
     ServerAPI.login(email, password)
       .then((token) => {
         this.props.dispatch({ type: 'SET_TOKEN', token  });
+        this.props.dispatch({ type: 'CHANGE_FIELD', field: 'isAuthenticated', value: true  });
+        this.props.dispatch({ type: 'CHANGE_FIELD', field: 'isFetchAuth', value: false });
       });
   }
 

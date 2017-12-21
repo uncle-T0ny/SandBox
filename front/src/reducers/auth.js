@@ -13,13 +13,22 @@ export default function auth(state = initialState, action) {
         ...state,
         ...obj,
       };
+    case 'LOGIN_SUCCESS': {
+      return {
+        ...state,
+        ...{ isAuthenticated: true }
+      };
+    }
     case 'SET_TOKEN':
-
       sessionStorage.setItem('token', action.token.token);
+      const newState = {
+        token: action.token,
+        isAuthenticated: true
+      };
 
       return {
         ...state,
-        ...action.token,
+        ...newState,
       };
     default:
       return state;

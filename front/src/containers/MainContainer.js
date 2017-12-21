@@ -2,9 +2,10 @@ import 'babel-polyfill';
 import 'babel-core/register';
 import 'antd/dist/antd.css';
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
+import { logger } from 'redux-logger';
+import { Provider, connect } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from '../saga/rootSaga';
@@ -21,6 +22,7 @@ import { CounterState } from '../components/CounterState';
 import { StateMachine } from '../components/StateMachine/StateMachine';
 import { Head } from '../components/head/Head';
 import { Body } from '../components/body/Body';
+import { TravelMap } from '../components/travelMap/TravelMap';
 import { Registration } from '../components/registration/Registration';
 
 import { LocaleProvider } from 'antd';
@@ -32,37 +34,53 @@ import './MainContainer.scss';
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducer,
-  applyMiddleware(sagaMiddleware),
+  applyMiddleware(sagaMiddleware, logger)
 );
 
 sagaMiddleware.run(rootSaga);
 
 const action = type => store.dispatch({ type });
 
+export default class MainContainer extends PureComponent {
+  render() {
 
-const MainContainer = () => (
-  <Provider store={store}>
-    <LocaleProvider locale={enUS}>
-      <Router>
-        <div className="MainContainer">
+    const { isFetchAuth, isAuthenticated } = store.getState().auth;
 
-          <Head/>
+    return (
+      <Provider store={store}>
+        <LocaleProvider locale={enUS}>
+          <Router>
+            <div className="MainContainer">
 
-          <Route exact path="/" component={Body}/>
-          <Route path="/registration" component={Registration}/>
+              <Head/>
 
-          {/*<div>Main app 3</div>*/}
+              <Route exact path="/*" render={() => {
+                if (isFetchAuth) {
+                  return <div>LOADING...</div>;
+                } else {
+                  return null;
+                }
+              }} />
 
-          {/*<button onClick={() => action('INCREMENT')}>Increment</button>*/}
-          {/*<button onClick={() => action('INCREMENT_ASYNC')}>Increment in 1 sec</button>*/}
-          {/*<CounterState />*/}
+              <Route exact path="/" render={() => {
+                return <Body />;
+              }} />
 
-          {/*<StateMachine />*/}
-        </div>
-      </Router>
+              <Route exact path="/travel-map" render={() => {
+                return <TravelMap />;
+              }} />
 
-    </LocaleProvider>
-  </Provider>
-);
+              <Route path="/registration" render={() => {
+                return <Registration />;
+              }} />
 
-export default MainContainer;
+
+            </div>
+          </Router>
+
+        </LocaleProvider>
+      </Provider>
+    );
+  }
+
+}
