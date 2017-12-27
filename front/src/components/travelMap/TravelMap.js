@@ -23,7 +23,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
       </div>
       )}
   </GoogleMap>
-))
+));
 
 @connect(mapStateToProps)
 class TravelMap extends PureComponent {
@@ -33,7 +33,7 @@ class TravelMap extends PureComponent {
       <div className="TravelMap">
         <MyMapComponent
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyA52pneVWNj8OkUtFx6D7I5i1KDrGNrNnI&sensor=true&v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjvEC_1Ryu-Q9ILNr9yuDNe_89omn5oM4&sensor=true&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height: '800px' }} />}
           mapElement={<div style={{ height: '100%' }} />}
