@@ -30,7 +30,7 @@ class Registration extends PureComponent {
 
   render() {
     return (
-      <div className="Body">
+      <div className="Registration">
         <Input placeholder="email"
                value={this.props.email}
                onChange={(e) => this.onChangeField('email', e.target.value)} />
