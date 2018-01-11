@@ -1,12 +1,33 @@
 @import "../../styles/colors";
 .Head {
+  font-family: $primary-font-family;
   //height: 100px;
   background-color: $primary-color;
   display: flex;
-  height: 5%;
-  justify-content: center;
-  
+  align-items: center;
+  justify-content: flex-start;
+
   a {
-    color: $primary-text-color;
+    position: relative;
+    left: 5%;
+    color: $primary-color-text;
+    padding: 0 1em ;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-align: center;
+    height: 100%;
+    letter-spacing: 1.5px;
+
+    display: flex;
+    div {
+      align-self: center;
+    }
+  }
+
+  // Hover for links in HEAD
+
+  a:hover{
+    background-color: rgba(0, 0, 0, 0.6);
   }
 }
+
