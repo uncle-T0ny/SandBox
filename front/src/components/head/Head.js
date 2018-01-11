@@ -26,9 +26,15 @@ class Head extends PureComponent {
           {/*format={dateFormat}*/}
           {/*placeholder="Select Time" />*/}
 
-        <Link to="/">Home</Link>
-        <Link to="/travel-map">Travels</Link>
-        <Link to="/registration">Registrations</Link>
+        <Link to="/">
+          <div>Home</div>
+        </Link>
+        <Link to="/travel-map">
+          <div>Travels</div>
+        </Link>
+        <Link to="/registration">
+          <div>Registrations</div>
+        </Link>
 
         <InfoBlock />
       </div>
