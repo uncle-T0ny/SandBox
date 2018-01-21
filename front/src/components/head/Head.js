@@ -32,10 +32,14 @@ class Head extends PureComponent {
         <Link to="/travel-map">
           <div>Travels</div>
         </Link>
-        <Link to="/registration">
-          <div>Registrations</div>
+        <Link to="/authentication"
+              onClick={() => this.props.dispatch({ type: 'CHANGE_FIELD', field: 'isActiveLoginForm', value: true })}>
+          <div>Log in</div>
         </Link>
-
+        <Link to="/authentication"
+              onClick={() => this.props.dispatch({ type: 'CHANGE_FIELD', field: 'isActiveLoginForm', value: false })}>
+          <div>Sign up</div>
+        </Link>
         <InfoBlock />
       </div>
     );

@@ -23,7 +23,7 @@ import { StateMachine } from '../components/StateMachine/StateMachine';
 import { Head } from '../components/head/Head';
 import { Body } from '../components/body/Body';
 import { TravelMap } from '../components/travelMap/TravelMap';
-import { Registration } from '../components/registration/Registration';
+import { Authentication } from '../components/authentication/Authentication';
 
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
@@ -70,8 +70,8 @@ export default class MainContainer extends PureComponent {
                 return <TravelMap />;
               }} />
 
-              <Route path="/registration" render={() => {
-                return <Registration />;
+              <Route path="/authentication" render={() => {
+                return <Authentication />;
               }} />
 
 

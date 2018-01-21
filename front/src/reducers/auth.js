@@ -1,7 +1,9 @@
 const initialState = {
   token: '',
   isAuthenticated: false,
-  isFetchAuth: false
+  isFetchAuth: false,
+
+  isActiveLoginForm: true
 };
 
 export default function auth(state = initialState, action) {

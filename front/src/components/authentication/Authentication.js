@@ -2,17 +2,21 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ServerAPI from './../../api/ServerAPI';
 import { Input, Button } from 'antd';
+import { LoginForm } from './LoginForm';
+import { SignUpForm } from './SignUpForm';
+
+import './Authentication.scss';
 
 const mapStateToProps = state => {
   return {
     email: state.auth.email,
     password: state.auth.password,
+    isActiveLoginForm: state.auth.isActiveLoginForm,
   };
 };
 
 @connect(mapStateToProps)
-class Registration extends PureComponent {
-
+class Authentication extends PureComponent {
   onLogIn() {
     const { email, password } = this.props;
     this.props.dispatch({ type: 'CHANGE_FIELD', isFetchAuth: true });
@@ -29,18 +33,29 @@ class Registration extends PureComponent {
   }
 
   render() {
+    const { isActiveLoginForm } = this.props;
+
     return (
       <div className="Body">
-        <Input placeholder="email"
-               value={this.props.email}
-               onChange={(e) => this.onChangeField('email', e.target.value)} />
-        <Input placeholder="password"
-               value={this.props.password}
-               onChange={(e) => this.onChangeField('password', e.target.value)} />
-        <Button type="primary" onClick={() => this.onLogIn()}>LOG IN</Button>
+        <div className="Authentication">
+          { isActiveLoginForm ?
+            <LoginForm />
+            :
+            <SignUpForm />
+          }
+
+        </div>
+
+        {/*<Input placeholder="email"*/}
+               {/*value={this.props.email}*/}
+               {/*onChange={(e) => this.onChangeField('email', e.target.value)} />*/}
+        {/*<Input placeholder="password"*/}
+               {/*value={this.props.password}*/}
+               {/*onChange={(e) => this.onChangeField('password', e.target.value)} />*/}
+        {/*<Button type="primary" onClick={() => this.onLogIn()}>LOG IN</Button>*/}
       </div>
     );
   }
 };
 
-export { Registration };
+export { Authentication };
